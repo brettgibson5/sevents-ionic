@@ -1,0 +1,7 @@
+{
+  "name": "sevents",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
