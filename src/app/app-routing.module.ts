@@ -5,6 +5,22 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
+  },
+  {
+    path: 'friends',
+    loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
+  },
+  {
+    path: 'cities',
+    loadChildren: () => import('./cities/cities.module').then( m => m.CitiesPageModule)
   }
 ];
 @NgModule({
