@@ -1,32 +1,29 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { FriendsListComponent } from './friends/friends-list/friends-list.component';
+import { FriendsDetailComponent } from './friends/friends-detail/friends-detail.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
+import { EventsDetailComponent } from './events/events-detail/events-detail.component';
+import { CitiesListComponent } from './cities/cities-list/cities-list.component';
+import { CitiesDetailComponent } from './cities/cities-detail/cities-detail.component';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginPageModule),
   },
-  {
-    path: 'events',
-    loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
-  },
-  {
-    path: 'friends',
-    loadChildren: () => import('./friends/friends.module').then( m => m.FriendsPageModule)
-  },
-  {
-    path: 'cities',
-    loadChildren: () => import('./cities/cities.module').then( m => m.CitiesPageModule)
-  }
+  { path: 'friends', component: FriendsListComponent },
+  { path: 'friends/:id', component: FriendsDetailComponent },
+  { path: 'events', component: EventsListComponent },
+  { path: 'events/:id', component: EventsDetailComponent },
+  { path: 'cities', component: CitiesListComponent },
+  { path: 'cities/:id', component: CitiesDetailComponent },
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
