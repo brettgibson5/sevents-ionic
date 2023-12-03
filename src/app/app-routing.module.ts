@@ -6,6 +6,7 @@ import { EventsListComponent } from './events/events-list/events-list.component'
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { CitiesListComponent } from './cities/cities-list/cities-list.component';
 import { CitiesDetailComponent } from './cities/cities-detail/cities-detail.component';
+import { AuthGuard } from './login/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'friends/:id', component: FriendsDetailComponent },
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EventsDetailComponent },
-  { path: 'cities', component: CitiesListComponent },
+  { path: 'cities', component: CitiesListComponent, canLoad: [AuthGuard] },
   { path: 'cities/:id', component: CitiesDetailComponent },
 ];
 @NgModule({
