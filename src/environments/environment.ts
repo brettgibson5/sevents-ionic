@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:3333',
+  auth: {
+    accessToken: 'at_secret',
+    refreshToken: 'rt_secret',
+  },
 };
 
 /*

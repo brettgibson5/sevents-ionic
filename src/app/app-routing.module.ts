@@ -14,12 +14,28 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
   },
-  { path: 'friends', component: FriendsListComponent },
-  { path: 'friends/:id', component: FriendsDetailComponent },
-  { path: 'events', component: EventsListComponent },
-  { path: 'events/:id', component: EventsDetailComponent },
-  { path: 'cities', component: CitiesListComponent, canLoad: [AuthGuard] },
-  { path: 'cities/:id', component: CitiesDetailComponent },
+  {
+    path: 'friends',
+    component: FriendsListComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'friends/:id',
+    component: FriendsDetailComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'events', component: EventsListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'events/:id',
+    component: EventsDetailComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'cities', component: CitiesListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'cities/:id',
+    component: CitiesDetailComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 @NgModule({
   imports: [

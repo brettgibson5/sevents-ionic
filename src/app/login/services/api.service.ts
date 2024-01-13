@@ -6,8 +6,8 @@ import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
 
-const ACCESS_TOKEN_KEY = 'super-secret';
-const REFRESH_TOKEN_KEY = 'my-refresh-token';
+const ACCESS_TOKEN_KEY = environment.auth.accessToken;
+const REFRESH_TOKEN_KEY = environment.auth.refreshToken;
 
 @Injectable({
   providedIn: 'root',
@@ -47,7 +47,7 @@ export class ApiService {
 
   // Sign in a user and store access and refres token
   login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.url}/auth/signin`, credentials).pipe(
+    return this.http.post(`${this.url}/auth/login`, credentials).pipe(
       switchMap((tokens: any) => {
         this.currentAccessToken = tokens.accessToken;
         const storeAccess = Preferences.set({
@@ -60,29 +60,27 @@ export class ApiService {
         });
         return from(Promise.all([storeAccess, storeRefresh]));
       }),
-      tap((_) => {
+      tap(() => {
         this.isAuthenticated.next(true);
       })
     );
   }
 
   logout() {
-    return this.http
-      .post(`${this.url}/auth/logout`, {})
-      .pipe(
-        switchMap((_) => {
-          this.currentAccessToken = '';
-          // Remove all stored tokens
-          const deleteAccess = Preferences.remove({ key: ACCESS_TOKEN_KEY });
-          const deleteRefresh = Preferences.remove({ key: REFRESH_TOKEN_KEY });
-          return from(Promise.all([deleteAccess, deleteRefresh]));
-        }),
-        tap((_) => {
-          this.isAuthenticated.next(false);
-          this.router.navigateByUrl('/', { replaceUrl: true });
-        })
-      )
-      .subscribe();
+    console.log('logout');
+    return this.http.post(`${this.url}/auth/logout`, {}).pipe(
+      switchMap(() => {
+        this.currentAccessToken = '';
+        // Remove all stored tokens
+        const deleteAccess = Preferences.remove({ key: ACCESS_TOKEN_KEY });
+        const deleteRefresh = Preferences.remove({ key: REFRESH_TOKEN_KEY });
+        return from(Promise.all([deleteAccess, deleteRefresh]));
+      }),
+      tap((_) => {
+        this.isAuthenticated.next(false);
+        this.router.navigateByUrl('/', { replaceUrl: true });
+      })
+    );
   }
 
   // Load the refresh token from storage

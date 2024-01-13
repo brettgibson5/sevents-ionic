@@ -1,18 +1,30 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="events">
-      <ion-label>This Week</ion-label>
-      <ion-icon name="calendar-outline"></ion-icon>
-    </ion-tab-button>
+    <pre>{{ isLoggedIn }}</pre>
+    <ng-container *ngIf="isLoggedIn">
+      <!-- <ion-tab-button tab="events">
+        <ion-label>This Week</ion-label>
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-tab-button>
 
-    <ion-tab-button tab="friends">
-      <ion-label>Friends</ion-label>
-      <ion-icon name="people-outline"></ion-icon>
-    </ion-tab-button>
-
-    <ion-tab-button tab="login">
-      <ion-label>Profile</ion-label>
-      <ion-icon name="calendar-outline"></ion-icon>
-    </ion-tab-button>
+      <ion-tab-button tab="friends">
+        <ion-label>Friends</ion-label>
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-tab-button> -->
+      <ion-tab-button tab="cities">
+        <ion-label>Cities</ion-label>
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="logout()">
+        <ion-label>Logout</ion-label>
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-tab-button>
+    </ng-container>
+    <ng-container *ngIf="!isLoggedIn">
+      <ion-tab-button tab="login">
+        <ion-label>Login</ion-label>
+        <ion-icon name="calendar-outline"></ion-icon>
+      </ion-tab-button>
+    </ng-container>
   </ion-tab-bar>
 </ion-tabs>
