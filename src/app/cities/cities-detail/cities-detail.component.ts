@@ -10,6 +10,7 @@ import { CitiesService } from 'src/app/shared/services/cities.service';
 export class CitiesDetailComponent implements OnInit {
   public city: City = {
     title: '',
+    slug: '',
     description: '',
     address: '',
   };
