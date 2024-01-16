@@ -7,7 +7,7 @@ import { EventsDetailComponent } from './events/events-detail/events-detail.comp
 import { CitiesListComponent } from './cities/cities-list/cities-list.component';
 import { CitiesDetailComponent } from './cities/cities-detail/cities-detail.component';
 import { AuthGuard } from './login/guards/auth.guard';
-
+import { HomeComponent } from './home/home.component'; // Import the HomeComponent
 const routes: Routes = [
   {
     path: 'login',
@@ -36,6 +36,7 @@ const routes: Routes = [
     component: CitiesDetailComponent,
     canActivate: [AuthGuard],
   },
+  { path: '**', component: HomeComponent },
 ];
 @NgModule({
   imports: [

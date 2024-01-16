@@ -55,10 +55,7 @@ export class JwtInterceptor implements HttpInterceptor {
   // Filter out URLs where you don't want to add the token!
   private isInBlockedList(url: string): Boolean {
     // Example: Filter out our login and logout API call
-    if (
-      url == `${environment.apiUrl}/auth` ||
-      url == `${environment.apiUrl}/auth/logout`
-    ) {
+    if (url == `${environment.apiUrl}/auth/login`) {
       return true;
     } else {
       return false;

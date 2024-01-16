@@ -49,14 +49,14 @@ export class ApiService {
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.url}/auth/login`, credentials).pipe(
       switchMap((tokens: any) => {
-        this.currentAccessToken = tokens.access_token;
+        this.currentAccessToken = tokens.accessToken;
         const storeAccess = Preferences.set({
           key: ACCESS_TOKEN_KEY,
-          value: tokens.access_token,
+          value: tokens.accessToken,
         });
         const storeRefresh = Preferences.set({
           key: REFRESH_TOKEN_KEY,
-          value: tokens.refresh_token,
+          value: tokens.refreshToken,
         });
         return from(Promise.all([storeAccess, storeRefresh]));
       }),
