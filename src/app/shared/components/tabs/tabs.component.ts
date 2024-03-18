@@ -14,7 +14,6 @@ export class TabsComponent implements OnInit {
   ngOnInit() {
     this.apiService.isAuthenticated.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
-      console.log('isLoggedIn', this.isLoggedIn);
     });
   }
 

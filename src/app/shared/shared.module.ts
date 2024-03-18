@@ -10,12 +10,12 @@ import { UsersService } from './services/users.service';
 @NgModule({
   declarations: [TabsComponent],
   imports: [CommonModule, IonicModule.forRoot()],
+  exports: [CommonModule, TabsComponent],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CitiesService,
     EventsService,
     UsersService,
   ],
-  exports: [TabsComponent],
 })
 export class SharedModule {}

@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { City } from '../interfaces/city';
 @Injectable({
   providedIn: 'root',
 })
 export class CitiesService {
   constructor(private http: HttpClient) {}
 
-  public getCities() {
+  public getCities(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/cities`);
   }
 

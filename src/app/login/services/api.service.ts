@@ -67,7 +67,6 @@ export class ApiService {
   }
 
   logout() {
-    console.log('logout');
     return this.http.post(`${this.url}/auth/logout`, {}).pipe(
       switchMap(() => {
         this.currentAccessToken = '';

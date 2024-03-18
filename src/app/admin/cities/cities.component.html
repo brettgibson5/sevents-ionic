@@ -1,0 +1,54 @@
+<div>
+  <!-- <ion-header>
+    <ion-toolbar>
+      <ion-title>Create New City</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <!-- <ion-content> -->
+  <!-- <form #cityForm="ngForm" (ngSubmit)="onSubmit(cityForm)">
+      <ion-item>
+        <ion-label>Title</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="selectedCity.title"
+          name="title"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="selectedCity.description"
+          name="description"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="selectedCity.address"
+          name="address"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="full" type="submit" [disabled]="!cityForm.valid"
+        >Submit</ion-button
+      >
+    </form> -->
+
+  <ion-content color="light">
+    <ion-list [inset]="true">
+      <ion-list-header>
+        <ion-label>Cities</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let city of cities">
+        <ion-label>{{ city.title }}</ion-label>
+        <ion-button (click)="onEdit(city)">Edit</ion-button>
+        <ion-button color="danger" (click)="onDelete(city)">Delete</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</div>

@@ -8,11 +8,17 @@ import { CitiesListComponent } from './cities/cities-list/cities-list.component'
 import { CitiesDetailComponent } from './cities/cities-detail/cities-detail.component';
 import { AuthGuard } from './login/guards/auth.guard';
 import { HomeComponent } from './home/home.component'; // Import the HomeComponent
+
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
     path: 'friends',
